@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'k5hy&b_&k3fs6(m$jv^cw*+&^hl(5i
 DEBUG = os.environ.get('DjANGO_DEBUG', '') != 'False'
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['murmuring-gorge-47724.herokuapp.com','127.0.0.1:8000/']
 
 STATIC_URL = '/static/'
 

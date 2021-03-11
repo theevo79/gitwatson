@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<link rel="stylesheet" href="https://expcdn.co.uk/www/css/bootstrapBake.css">
+		<style>
+			body {
+
+    			text-align: left;
+   				margin: auto;
+    			padding: 15px;
+    			width: 70%;
+				}
+			header {
+				text-align: center;
+   				padding: 15px;
+    			height: 10%;
+				}
+			div.form
+				{
+    			display: block;
+    			text-align: center;
+    			padding: 20px;
+				}
+			div.a
+				{
+    			display: block;
+    			text-align: center;
+    			padding: 20px;
+				}
+			
+		</style>
+		<title>Users</title>
+	</head>
+	<header>
+        <header role="banner" class="l-header header-public">
+				<div>
+					<img src="https://cdn-images-1.medium.com/max/800/1*NF6AdPk6sOMNNbQE5glvEQ.png">
+				</div>
+		  <div class="fr">
+					<p><span>Already registered?</span> <a href="{% url 'users:login' %}"><strong>Log in</strong></a></p>    
+				</div>
+			</header>
+		  <section class="promo-area">
+		</section>
+	</header>
+	<body>
+		{% block body %}
+		{% endblock %}
+	</body>
+</html>

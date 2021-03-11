@@ -1,0 +1,313 @@
+<h1>News</h1>
+	<ul>
+		{% for new in news %}
+			<li>News website {{ new.id }}: {{ new.newsurl }} is in the category {{ new.cat1 }} with {{ new.sentiment }} sentiment and a score of {{ new.senti_score }}</li>
+		{% endfor %}
+	</ul>
+
+	<div>The average sentiment score is {{ news }}
+
+		{% block title %}Create an Account{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% csrf_token %}
+		{{ form|crispy }}
+
+		<form method="POST" class="form-group">
+		{% csrf_token %}
+		
+		<button type="submit" class="btn">Register</button>
+	</form>
+
+<a href="{% url 'index1' %}">See your news</a>
+
+NEXT STEP: GET IT TO ONLY SEE THE USER WHO IS LOGGED IN'S PAGE
+-USE SESSION + <> USER ID, I THINK. SEE developer.mozilla website and brian's video. Remember adding foreign key.
+
+THEN GET IT TO PROCESS MULTIPLE WEBSITES DOWNLOADED
+
+THEN GET A TABLE WITH MORE DATA + LINKS TO OTHER VIEWS WITH DIFFERENT INFO
+
+THEN SERVE IT UP
+
+<li><a href="//www.experian.com.au/" target="_blank">Australia</a></li><li><a href="//www.experian.at/" target="_blank">Austria</a></li><li><a href="//www.experian.be/" target="_blank">Belgium</a></li><li><a href="//www.serasaexperian.com.br/" target="_blank">Brazil</a></li><li><a href="//www.experian.bg/" target="_blank">Bulgaria</a></li><li><a href="//www.experian.ca/" target="_blank">Canada</a></li><li><a href="//www.experian.cl/" target="_blank">Chile</a></li><li><a href="//www.experian.com.cn/" target="_blank">China</a></li><li><a href="//www.experian.cz/" target="_blank">Czech Republic</a></li><li><a href="//www.experian.dk/" target="_blank">Denmark</a></li></ul><ul><li><a href="//www.experian.fi/" target="_blank">Finland</a></li><li><a href="//www.experian.fr/" target="_blank">France</a></li><li><a href="//www.experian.de/" target="_blank">Germany</a></li><li><a href="//www.experian.gr/" target="_blank">Greece</a></li><li><a href="//www.experian.com.hk/" target="_blank">Hong Kong</a></li><li><a href="//www.experian.in/" target="_blank">India</a></li><li><a href="//www.experian.ie/" target="_blank">Ireland</a></li><li><a href="//www.experian.it/" target="_blank">Italy</a></li><li><a href="//www.experian.co.jp/" target="_blank">Japan</a></li><li><a href="//www.experian.com.my/" target="_blank">Malaysia</a></li><li><a href="//www.experian.com.mx/" target="_blank">Mexico</a></li></ul></div><div class="global-sites-split"><ul><li><a href="//www.experian.co.ma/" target="_blank">Morocco</a></li><li><a href="//www.experian.nl/" target="_blank">Netherlands</a></li><li><a href="//www.experian.co.nz/" target="_blank">New Zealand</a></li><li><a href="//www.experian.no/" target="_blank">Norway</a></li><li><a href="//www.experian.com.pl/" target="_blank">Poland</a></li><li><a href="//www.experian.ru.com/" target="_blank">Russia</a></li><li><a href="//www.experian.com.sg/" target="_blank">Singapore</a></li><li><a href="//www.experian.co.za/" target="_blank">South Africa</a></li><li><a href="//www.experian.co.kr/" target="_blank">South Korea</a></li></ul><ul><li><a href="//www.experian.es/" target="_blank">Spain</a></li><li><a href="//www.experian.se/" target="_blank">Sweden</a></li><li><a href="//www.experian.ch/" target="_blank">Switzerland</a></li><li><a href="//www.experian.co.th/" target="_blank">Thailand</a></li><li><a href="http://www.experian.com.tw/" target="_blank">Taiwan</a></li><li><a href="//www.experian.com.tr/" target="_blank">Turkey</a></li><li><a href="//www.experian.ae/" target="_blank">UAE</a></li><li><a href="//www.experian.co.uk/" target="_blank">United Kingdom</a></li><li><a href="//www.experian.com/" target="_blank">United States</a></li><li><a href="//www.experian.com.vn/" target="_blank">Vietnam</a></li>
+
+<div class="providers-list"><span class="icon-homepage-providers barclays"><i class="b-lazy" style="background-image: url(&quot;https://expcdn.co.uk/www/images/sprite-homepage-providers.svg?d2d123bdb49f78c52afb0a301b3eeeca&quot;);"></i></span> <span class="icon-homepage-providers capone"><i class="b-lazy" style="background-image: url(&quot;https://expcdn.co.uk/www/images/sprite-homepage-providers.svg?d2d123bdb49f78c52afb0a301b3eeeca&quot;);"></i></span> <span class="icon-homepage-providers amex"><i class="b-lazy" style="background-image: url(&quot;https://expcdn.co.uk/www/images/sprite-homepage-providers.svg?d2d123bdb49f78c52afb0a301b3eeeca&quot;);"></i></span> <span class="icon-homepage-providers lloyds"><i class="b-lazy" style="background-image: url(&quot;https://expcdn.co.uk/www/images/sprite-homepage-providers.svg?d2d123bdb49f78c52afb0a301b3eeeca&quot;);"></i></span> <span class="icon-homepage-providers shawbrook"><i class="b-lazy" style="background-image: url(&quot;https://expcdn.co.uk/www/images/sprite-homepage-providers.svg?d2d123bdb49f78c52afb0a301b3eeeca&quot;);"></i></span> <span class="icon-homepage-providers virgin"><i class="b-lazy" style="background-image: url(&quot;https://expcdn.co.uk/www/images/sprite-homepage-providers.svg?d2d123bdb49f78c52afb0a301b3eeeca&quot;);"></i></span></div>
+
+<section id="section-7"><div class="container site-wrap b-lazy" data-src-small="https://expcdn.co.uk/www/images/dataself/homepage-europe-m.jpg?bc0328138de2b0d7fac68db34be8394c" data-src-medium="https://expcdn.co.uk/www/images/dataself/homepage-europe-t.jpg?98c7451d20c873b2d115d226132383f6" style="background-image: url(&quot;https://expcdn.co.uk/www/images/dataself/homepage-europe.jpg?335eb7e6a86ae4fa59e96e3ddaac8bc6&quot;);"><div class="row"><div class="col-xs-12 col-md-6 col-md-offset-6 mt mb-60"><p class="callout">Join <strong class="highlight">xxxxx</strong> xxxx <strong class="highlight block">xxxxx</strong> xxxx <small>xxxxxx</small></p></div></div></div></section>
+
+<a href="//www.experian.co.uk/consumer/index.html">Login</a></li><li><a href="//www.experian.co.uk/consumer/statutory-report.html">Statutory Report</a></li><li>
+
+<div class="site-wrap__col m-15-xs-up"><h5 class="footer-h-desktop">About Experian</h5><h5 class="footer-h-mobile">About Experian</h5><div class="site-wrap__list-wrp" style="display: none;"><ul class="col-split-2"><li><a href="//www.experian.co.uk/about-us/index.html">Why Experian</a></li><li><a href="//www.experianplc.com/media/news">Press</a></li><li><a href="//www.experianplc.com/">Investor Relations</a></li><li><a href="//www.experian.co.uk/consumer/affiliate.html">Affiliate</a></li><li><a href="//www.experian.co.uk/careers/index.html">Careers</a></li><li><a href="//www.experian.co.uk/about-us/information-assurance.html">Responsibilities</a></li><li><a href="//www.experian.co.uk/responsibilities/corporate-responsibility/slavery-and-human-traffic-statement.html">Modern Slavery</a></li><li><a href="https://ins.experian.co.uk/contact">Contact us</a></li><li><a href="//consumer.help.experian.co.uk/OOS/s/">FAQs</a></li></ul></div></div>
+
+<div class="site-wrap__col site-wrap__col-slim m-15-xs-up"><h5 class="footer-h-desktop">Legal</h5><h5 class="footer-h-mobile">Legal</h5><div class="site-wrap__list-wrp" style="display: none;"><ul><li><a href="//www.experian.co.uk/legal/index.html">Terms &amp; Conditions</a></li><li><a href="//www.experian.co.uk/privacy-and-your-data.html">Privacy and your data</a></li><li><a href="javascript: gateway.openModal()">Cookies &amp; online marketing</a></li><li><a href="//www.experian.co.uk/consumer/marketing-claims.html">Marketing claims</a></li><li><a href="//www.experian.co.uk/marketing-services/consumer-information-portal/">Your data and marketing</a></li></ul></div></div><div class="site-wrap__col m-15-xs-up"><h5 class="mb-0-md footer-h-desktop">Social &amp; Experian App</h5><h5 class="mb-0-md footer-h-mobile">Social &amp; Experian App</h5><div class="site-wrap__list-wrp" style="display: none;"><ul class="col-split-2"><li><a href="//www.facebook.com/ExperianUK" target="_blank">Facebook - Like us</a></li><li><a href="//twitter.com/ExperianExperts" target="_blank">Twitter - Follow us</a></li><li><a href="//www.youtube.com/user/CreditExpertUK" target="_blank">YouTube - Subscribe</a></li><li class="site-wrap__list-inline"><a class="icon-apps icon-app-store" href="https://itunes.apple.com/app/apple-store/id1114748256?pt=410959&amp;ct=Website%20Footer&amp;mt=8" target="_blank"></a></li><li class="site-wrap__list-inline"><a class="icon-apps icon-play-store" href="https://play.google.com/store/apps/details?id=net.intellectsoft.experian&amp;referrer=utm_source%3Dwebsite%26utm_campaign%3DWebsite%2520Footer" target="_blank"></a></li></ul></div></div></div></div>
+
+<div class="container site-wrap section-wrp"><div class="site-wrap__row mb-30"><div class="site-wrap__col site-wrap__col-slim m-15-xs-up"><h5 class="footer-h-desktop">Choices</h5><h5 class="footer-h-mobile">Choices</h5><div class="site-wrap__list-wrp" style="display: none;"><ul><li><a href="//www.experian.co.uk/consumer/experian-account.html">Sign up</a></li><li><a href="//www.experian.co.uk/consumer/login.html">Log in</a></li></ul></div></div>
+
+<div class="site-wrap"><div><h4>xxxxx</h4><ul class="mt-20"><li><span class="icon-homepage blue"></span><h4 class="grey">xxx</h4><p>Sxxxxx</p></li><li><span class="icon-homepage tick-circle-blue"></span><h4 class="grey">xxxx</h4><p>xxxxxx</p></li><li><span class="icon-homepage rates-blue"></span><h4 class="grey">xxxx</h4><p>xxxxxx</p></li></ul><p class="disclaimer center show-sm">xxxxx.</p></div></div></section><section id="section-8"><div class="container site-wrap"><div class="col-xs-12"><h3>xxxxxx</h3><p>xxxxxx.</p><a class="btn btn--f1 btn-center blue-border mb-20" title="Find out more about CreditExpert" href="https://www.experian.co.uk/consumer/index.html">xxxx</a></div></div>
+
+	<strong>xxx</strong> xx <strong>xxxxx</strong> xxxxx.</p><p class="disclaimer hide-sm-down">xxxxx.</p>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	h1 {
+    color: #3399ff;
+    text-align: center;
+    margin: auto;
+    padding: 15px;
+}
+h2 {
+    color: #3399ff;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}
+
+body {
+
+    text-align: left;
+    margin: auto;
+    padding: 15px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+<div class="formBox qg_si">
+    
+    <div class="entryBox">
+
+        <h1>Your details</h1>
+        
+            <div class="intro-text">Please complete all fields unless otherwise indicated</div>
+   
+
+
+
+<fieldset class="qs">
+    <legend><span>Sign up to GOV.UK Verify</span></legend>
+    <div class="intro"></div>
+    <div class="clear"></div>
+    <p class="pval"><span class="field-validation-valid" data-valmsg-for="sisi" data-valmsg-replace="true"></span></p>
+    <div class="fields">
+
+<div class="field list-field">
+    
+    <div class="ir">
+        <div><label for="sisititle">Title</label></div>
+        <select id="sisititle" name="sisititle" autofocus="autofocus" data-val="true" data-val-required="Please select your title.">
+<option value="">Select...</option><option value="mr">Mr</option><option value="mrs">Mrs</option><option value="miss">Miss</option><option value="ms">Ms</option><option value="master">Master</option><option value="dr">Dr</option><option value="other">Other</option>                    <optgroup label=""></optgroup>
+        </select>
+    </div>
+    <span class="field-validation-valid" data-valmsg-for="sisititle" data-valmsg-replace="true"></span>
+</div>
+
+
+<div class="clear"></div>
+<div class="field text-field">
+    <label for="sisiforename">First name</label>
+    
+
+    <div class="ir">
+        <input data-val="true" data-val-length="Please enter a value between {0} and {1} characters long." data-val-length-max="15" data-val-length-min="1" data-val-regex="First name may only contain letters, dashes (-), apostrophes ('), or spaces. Please remove all other characters." data-val-regex-pattern="^[a-zA-Z][a-zA-Z \.\-\']*$" data-val-required="Please enter your first name." id="sisiforename" name="sisiforename" type="text" value="">       
+                    </div>
+    <span class="field-validation-valid" data-valmsg-for="sisiforename" data-valmsg-replace="true"></span>  
+</div>
+<div class="clear"></div>
+
+
+<div class="field text-field">
+
+
+    <label for="sisisurname">Last name</label>
+    
+
+    <div class="ir">
+        <input data-val="true" data-val-length="Please enter a value between {0} and {1} characters long." data-val-length-max="30" data-val-length-min="1" data-val-regex="Surname may only contain letters, dashes (-), apostrophes ('), or spaces. Please remove all other characters." data-val-regex-pattern="^[a-zA-Z][a-zA-Z \.\-\']*$" data-val-required="Please enter your last name." id="sisisurname" name="sisisurname" type="text" value="">       
+                    </div>
+    <span class="field-validation-valid" data-valmsg-for="sisisurname" data-valmsg-replace="true"></span>  
+</div>
+<div class="clear"></div>
+
+
+
+<div class="field date-field">
+    <div class="ir">
+        <div class="lbl" id="sisidateofbirth">Date of birth</div>
+
+        <label for="sisidateofbirthd" class="obscure">Date of birth - Day</label>
+        <input class="d numeric" id="sisidateofbirthd" name="sisidateofbirthd" data-val="true" data-val-group="sisidateofbirth" data-val-datev="Invalid date format." data-val-required="Date of Birth is required." data-val-mindate-date="08/03/1906" data-val-maxdate-date="07/03/2003" data-val-mindate="The date of birth you have entered is invalid, please try again." data-val-maxdate="You must be aged 18 or over to use this service." maxlength="2" placeholder="Day" type="text" value="">
+    
+        <label for="sisidateofbirthm" class="obscure">Date of birth - Month</label>
+        <input class="m mobileNumeric" id="sisidateofbirthm" name="sisidateofbirthm" data-val="true" data-val-group="sisidateofbirth" data-val-datev="Invalid date format." data-val-required="Date of Birth is required." data-val-mindate-date="08/03/1906" data-val-maxdate-date="07/03/2003" data-val-mindate="The date of birth you have entered is invalid, please try again." data-val-maxdate="You must be aged 18 or over to use this service." placeholder="Month" type="text" value="">
+    
+        <label for="sisidateofbirthy" class="obscure">Date of birth - Year</label>
+        <input class="y numeric" id="sisidateofbirthy" name="sisidateofbirthy" data-val="true" data-val-group="sisidateofbirth" data-val-datev="Invalid date format." data-val-datev-pivot="21" data-val-datev-cent="20" data-val-datev-pivotdir="-1" data-val-required="Date of Birth is required." data-val-mindate-date="08/03/1906" data-val-maxdate-date="07/03/2003" data-val-mindate="The date of birth you have entered is invalid, please try again." data-val-maxdate="You must be aged 18 or over to use this service." maxlength="4" placeholder="Year" type="text" value="">
+        <div class="clear"></div>
+    </div>
+    <span class="field-validation-valid" data-valmsg-for="sisidateofbirthd" data-valmsg-replace="true"></span>
+    <span class="field-validation-valid" data-valmsg-for="sisidateofbirthm" data-valmsg-replace="true"></span>
+    <span class="field-validation-valid" data-valmsg-for="sisidateofbirthy" data-valmsg-replace="true"></span>
+    <span class="field-validation-valid" data-valmsg-for="sisidateofbirth" data-valmsg-replace="true"></span>
+</div>
+
+
+
+<div class="clear"></div>
+
+
+<div class="field text-field">
+    <input id="EmailValidationMessage" name="EmailValidationMessage" type="hidden" value="">
+    <label for="sisiemail">Email address</label>
+
+        <div class="ca">This will be used as your username.</div>
+    <div class="ir input-group">
+        <div class="text-field__suggestion">
+            <div class="text-field__suggestion__inner-element collapsed" data-relatedto="sisiemail"></div>
+        </div>
+
+            <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+        <div class="loader-container" data-relatedto="sisiemail">
+            <div class="loader"></div>
+        </div>
+        
+        <input data-val="true" data-val-email="Please provide a valid email address." data-val-emailvalidation="true" data-val-regex="Please provide a valid email address." data-val-regex-pattern="^[a-zA-Z0-9!#$%&amp;’'`*+\/=?^_{|}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'*+=?^_`{|}~-]+)*@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9!#$%&amp;'*+=?^_`{|}~-]+)*$" data-val-required="Please enter your email address." id="sisiemail" name="sisiemail" type="email" value="">
+    </div>
+    <span class="field-validation-valid" data-valmsg-for="sisiemail" data-valmsg-replace="true"></span>
+    <div class="cb">By completing this field, you are consenting to Experian checking to see if you have an existing Experian ID in line with Experian's <a class="small-text" href="/Help/Privacy" target="help" tabindex="1">Privacy policy.</a></div>
+</div>
+
+
+<div class="clear"></div>
+
+<div class="field text-field">
+    <input id="EmailValidationMessage" name="EmailValidationMessage" type="hidden" value="">
+    <label for="sisiconfirmemail">Confirm email address</label>
+
+    <div class="ir">
+        <div class="text-field__suggestion">
+            <div class="text-field__suggestion__inner-element collapsed" data-relatedto="sisiconfirmemail"></div>
+        </div>
+
+        <div class="loader-container" data-relatedto="sisiconfirmemail">
+            <div class="loader"></div>
+        </div>
+        
+        <input data-val="true" data-val-email="The confirmation address and e-mail address must match." data-val-equalto="The confirmation address and email must match" data-val-equalto-other="email" data-val-regex="The confirmation address and e-mail address must match." data-val-regex-pattern="^[a-zA-Z0-9!#$%&amp;’'`*+\/=?^_{|}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'*+=?^_`{|}~-]+)*@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9!#$%&amp;'*+=?^_`{|}~-]+)*$" data-val-required="The confirmation address and e-mail address must match." id="sisiconfirmemail" name="sisiconfirmemail" type="email" value="">
+    </div>
+    <span class="field-validation-valid" data-valmsg-for="sisiconfirmemail" data-valmsg-replace="true"></span>
+</div>
+
+
+<div class="clear"></div>
+
+<div class="field text-field">
+    <label for="sisicontactno">Contact phone number</label>
+    
+
+    <div class="ir">
+        <input data-val="true" data-val-regex="Please enter a valid phone number." data-val-regex-pattern="^ *(07[0-9]{3}\s?[0-9]{6})|((01|02){1}(\d ?){8,9}) *$" data-val-required="Contact phone number is required." id="sisicontactno" name="sisicontactno" pattern="[0-9]*" type="text" value="">       
+                    </div>
+    <span class="field-validation-valid" data-valmsg-for="sisicontactno" data-valmsg-replace="true"></span>  
+</div>
+<div class="clear"></div>
+
+
+<div class="field text-field">
+    <label for="sisimothersmaidenname">Mother's maiden name</label>
+    
+
+        <div class="ca">We need this to help confirm your identity.</div>
+    <div class="ir">
+        <input data-val="true" data-val-length="Please enter a value between {0} and {1} characters long." data-val-length-max="30" data-val-length-min="1" data-val-regex="Your mother's maiden name may only contain letters, dashes (-), apostrophes ('), or spaces. Please remove all other characters." data-val-regex-pattern="^[a-zA-Z][a-zA-Z \.\-\']*$" data-val-required="Please enter your mother's maiden name." id="sisimothersmaidenname" name="sisimothersmaidenname" type="text" value="">       
+                    </div>
+    <span class="field-validation-valid" data-valmsg-for="sisimothersmaidenname" data-valmsg-replace="true"></span>  
+</div>
+<div class="clear"></div>
+
+
+<div class="field check-field qstcborder">
+    
+
+    <input checked="checked" id="sisimopt" name="sisimopt" type="checkbox" value="true"><input name="sisimopt" type="hidden" value="false">
+     <label for="sisimopt">By continuing to register for your Experian Account, you agree to Experian handling your information as outlined in our <a href="https://www.experian.co.uk/consumer/privacy.html" target="_blank" tabindex="-1">Privacy Policy</a>.
+        We would also like to send you useful news and offers about our services and the products and providers we compare. If you’d prefer not to receive these communications please untick the box. You will only receive communications from Experian.
+        </label>
+
+    <br>
+    <span class="field-validation-valid" data-valmsg-for="sisimopt" data-valmsg-replace="true"></span>
+
+</div>
+
+<div class="clear"></div>
+    </div>
+    <div class="intro"></div>
+</fieldset>
+<div class="fside">
+    
+</div>
+<div class="clear"></div>
+
+        
+        
+    </div>
+    <div class="clear"></div>
+    <input type="hidden" id="_p" name="_p"><div class="regreww"><span class="regrew">You're now one step closer to your FREE Experian Credit Score!</span>
+    
+    <div class="btn_container">
+            <input id="continueButton" class="btn-submit finish" type="submit" name="Finish" value="Continue">
+    
+
+
+			    <a href="/Cancel" id="cancelLink" class="cancel">Cancel</a>
+    </div>
+</div></div>
+
+<header>
+        <a class="skip-to-contents" href="#content" tabindex="-1">Skip to contents</a>
+
+		<header role="banner" class="l-header header-public">
+				<div>
+					<div id="logo"></div>
+				</div>
+		  <div class="fr">
+					<p class="login"><span>Already registered?</span> <a class="link ml" href="/Account/Login"><strong>Log in</strong></a></p>    
+				</div>
+			</header>
+		  <section class="promo-area">
+		</section>
+	    </header>
+
+	<h4>Sadness score: {{ sadness }}</h4>
+	<h4>Joy score: {{ joy }}</h4>
+	<h4>Fear score: {{ fear }}</h4>
+	<h4>Disgust score: {{ disgust }}</h4>
+	<h4>Anger score: {{ anger }}</h4>
+
+	<div class="row1">
+		<div class="column1" style="background-color:#ddd">
+    		<h4>Most Positive Websites</h4>
+    			<ol>
+	    		{% for t in top5 %}
+	    			<li>{{ t.newsurl }}, Sentiment Score: {{ t.senti_score }}</li>
+	    		{% endfor %}
+				</ol>
+		</div>
+		<div class="column1" style="background-color:#ddd">
+			<h3>Most Negative Websites</h3>
+				<ol>
+	    		{% for b in bottom5 %}
+	    			<li>{{ b.newsurl }}, Sentiment Score: {{ b.senti_score }}</li>
+	    		{% endfor %}
+				</ol>
+		</div>
+	</div>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">

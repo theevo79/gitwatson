@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<link rel="stylesheet" href="https://expcdn.co.uk/www/css/bootstrapBake.css">
+		<link rel="stylesheet" href="{% static 'news/styles.css' %}">
+		<style>
+			header {
+				text-align: center;
+   				padding: 15px;
+    			height: 10%;
+				}
+			
+			div.form
+				{
+    			display: block;
+    			text-align: center;
+    			padding: 20px;
+				}
+			{
+				box-sizing: border-box;
+			}
+			.column {
+				float: left;
+				width: 20%;
+				padding: 10px;
+				height: 150px;
+				text-align: center;
+			}
+			.row:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			.column1 {
+				float: left;
+				width: 50%;
+				padding: 10px;
+				height: 500px;
+				text-align: center;
+			}
+			.row1:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+
+		</style>
+		<title>Your News</title>
+	</head>
+	<header>
+        <header role="banner" class="l-header header-public">
+				<div>
+					<img src="https://cdn-images-1.medium.com/max/800/1*NF6AdPk6sOMNNbQE5glvEQ.png">
+				</div>
+		  
+		</header>
+		  
+	</header>
+	<body>
+		{% block body %}
+		{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="//javascript:;"></script><script src="//javascript:;"></script><script src="//javascript:;"></script><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author" content="AE"><title>News Sentiment | Sentiment, Emotion &amp; Topics</title><meta name="description" content="Check your overall exposure to the news through sentiment analysis."><meta name="theme-color" content="#26478d"><style>@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Roboto Light'), local('Roboto-Light'),
+      url('https://expcdn.co.uk/www/fonts/roboto-v19-latin-300.woff2') format('woff2'),
+      url('https://expcdn.co.uk/www/fonts/roboto-v19-latin-300.woff') format('woff');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'),
+      url('https://expcdn.co.uk/www/fonts/roboto-v19-latin-regular.woff2') format('woff2'),
+      url('https://expcdn.co.uk/www/fonts/roboto-v19-latin-regular.woff') format('woff');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Roboto Medium'), local('Roboto-Medium'),
+      url('https://expcdn.co.uk/www/fonts/roboto-v19-latin-500.woff2') format('woff2'),
+      url('https://expcdn.co.uk/www/fonts/roboto-v19-latin-500.woff') format('woff');
+    font-display: swap;
+  }</style><link rel="stylesheet" href="https://expcdn.co.uk/www/css/bootstrapBake.css"><link href="https://expcdn.co.uk/www/css/homepage.css?84e0c57063f82e2abd23" rel="stylesheet"><script type="text/javascript" src="//tags.experian.co.uk/experian/ukexpprod/Bootstrap.js"></script><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><style type="text/css">#ensBannerBG {
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999 !important;
+    height: 100% !important;
+    margin: 0;
+    opacity: 1;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100% !important;
+}
+#ensModalBG {
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999999999 !important;
+    height: 100% !important;
+    margin: 0;
+    opacity: 1;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100% !important;
+}
+body #ensNotifyBanner {
+	top: 0;
+	bottom: unset;
+	left: 0 !important;
+	width: 100%;
+	opacity: unset;
+	background-color: #FFF;
+	color: #63666A;
+	padding: 20px;
+	border-radius: 0;
+	font-size: 16px;
+	z-index: 999999999;
+}
+body #ensNotifyBanner #ensNotifyBannerInner {
+	margin: 0 auto;
+    display: flex;
+    width: 100%;
+    max-width: 1440px;
+}
+body #ensNotifyBanner #ensBannerDescription {
+	width: 100%;
+	margin-right: 45px;
+}
+body #ensNotifyBanner #ensBannerDescription p {
+	font-size: unset;
+	font-weight: unset;
+	margin: 0;
+}
+body #ensNotifyBanner #ensBannerDescription p:first-of-type {
+	margin-bottom: 10px;
+}
+body #ensNotifyBanner .ensButtons {
+	max-width: 170px;
+	font-weight: 500;
+	margin-top: 0;
+}
+body #ensNotifyBanner .ensButtons .button {
+	width: 176px;
+	height: 40px;
+	margin-left: 0;
+}
+body #ensNotifyBanner .ensButtons #ensOpenModal {
+	margin-bottom: 14px;
+	color: #0076DC;
+    border: 0;
+    font-size: 16px;
+    height: 24px;
+}
+body #ensNotifyBanner .ensButtons #ensOpenModal .ensOpenButtonIcon {
+	font-size: 16px;
+    position: relative;
+    top: 2px;
+}
+body #ensNotifyBanner .ensButtons #ensCloseBanner {
+	background-color: #0076DC;
+	border-radius: 6px;
+	border: 0;
+    box-shadow: none;
+    font-size: 16px;
+}
+body #ensModalWrapper {
+	background-color: #FFF;
+    border-radius: 12px;
+    width: 650px;
+    height: max-content;
+    top: 10vh !important;
+    right: 0;
+    bottom: 0;
+    left: 0 !important;
+    margin: 0 auto;
+    box-shadow: unset;
+    position: fixed;
+    border: 0;
+    padding: 30px;
+    line-height: unset;
+    z-index: 9999999999;
+}
+body #ensModalWrapper #ensModalWrapperInner {
+	max-width: 1440px;
+    margin: 0 auto;
+}
+body #ensModalWrapper .ensModal .ensTitle {
+	margin: 0 0 5px 0;
+    width: 95%;
+    font-size: 26px;
+    color: #1d4f91;
+    position: relative;
+    top: -5px;
+    left: -1px;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 3px;
+    text-align: left;
+}
+body #ensModalWrapper .ensModal .description {
+	font-size: 16px;
+	max-width: 100%;
+}
+body #ensModalWrapper .ensToggleRowWrapper {
+	color: #63666A;
+}
+body #ensModalWrapper .ensModal .consentDescription {
+	color: #63666A;
+}
+body #ensModalWrapper .ensModal .consentDescription p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+body #ensModalWrapper .ensToggleRow {
+	position: relative;
+}
+body #ensModalWrapper .ensToggleRow:last-of-type {
+	opacity: unset !important;
+}
+body #ensModalWrapper .ensToggleLabel {
+	display: block;
+	font-weight: 500;
+	margin-bottom: 12px;
+}
+body #ensModalWrapper .ensToggleLabel:not([for]) {
+	display: none;
+}
+body #ensModalWrapper .ensToggleLabel:after {
+    content: "";
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMS43MTguM0ExIDEgMCAxMC4yODYgMS42OTZsMy44MTggMy45MTdjLjA2NC4wNjUuMTQzLjEzMS4yNDYuMTk1LjQ2NC4yODUgMS4wOC4yODYgMS41NS0uMTk0di0uMDAybDMuODE4LTMuOTE2QTEgMSAwIDAwOC4yODYuM0w1LjAwMiAzLjY2OSAxLjcxOC4yOTl6IiBmaWxsPSIjMDA3NkRDIi8+PC9zdmc+);
+    background-size: 10px;
+    display: inline-flex;
+    background-repeat: no-repeat;
+    position: relative;
+    bottom: -2px;
+    width: 10px;
+    height: 10px;
+    left: 6px;
+    transform: rotate(0deg);
+    transition: transform .25s linear,right .25s ease;
+}
+body #ensModalWrapper .ensToggleLabel.ensExpanded:after {
+	transform: rotate(-180deg);
+	bottom: 2px;
+}
+body #ensModalWrapper .ensToggleRowTitle {
+    position: absolute;
+    width: 90%;
+    height: 30px;
+    z-index: 9999;
+}
+body #ensModalWrapper .ensModal {
+	height: auto;
+    max-height: 600px;
+    overflow: auto;
+    padding: 0px;
+}
+body #ensModalWrapper .ensModal .card {
+	bottom: 5px;
+}
+body #ensModalWrapper .ensModal .switch {
+	width: 60px;
+	height: 30px;
+	border-radius: 20px;
+}
+body #ensModalWrapper .ensModal .toggle {
+	height: 26px;
+    width: 26px;
+	top: 2px;
+    left: 2px;
+}
+body #ensModalWrapper .ensModal input[type='checkbox']:checked ~ .toggle {
+	left: 32px;
+}
+body #ensModalWrapper hr:nth-of-type(3n) {
+	display: none;
+}
+body #ensModalWrapper .ensButtons {
+	margin-top: 26px;
+	font-size: 16px;
+	font-weight: 500;
+}
+body #ensModalWrapper #ensSave {
+	background-color: #FFF;
+    color: #0076DC;
+    border: 1px #0076DC solid;
+    box-shadow: unset;
+    border-radius: 6px;
+    width: 162px;
+    height: 40px;
+    float: left;
+    font-size: 16px;
+}
+body #ensModalWrapper #ensAcceptAll {
+	background-color: #0076DC;
+    color: #FFF;
+    border: 1px #0076DC solid;
+    box-shadow: unset;
+    border-radius: 6px;
+    width: 162px;
+    height: 40px;
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 767px) {
+	body #ensNotifyBanner {
+    	top: unset;
+    	bottom: 0;
+    	font-size: 14px;
+    	border-top: 0;
+    }
+    body #ensNotifyBanner #ensNotifyBannerInner {
+    	display: block;
+    	width: unset;
+	}
+	body #ensNotifyBanner #ensBannerDescription {
+		width: 100%;
+	    border-bottom: 1px solid #C5C5C5;
+	    padding-bottom: 18px;
+	    margin-bottom: 18px;
+	}
+	body #ensNotifyBanner .ensButtons {
+		display: contents;
+		font-size: 14px;
+		font-weight: unset;
+	}
+	body #ensNotifyBanner .ensButtons #ensOpenModal {
+		width: calc(50vw - 35px);
+		margin-bottom: 0;
+	}
+	body #ensNotifyBanner .ensButtons #ensCloseBanner {
+		width: calc(50vw - 35px);
+		margin-left: 15px;
+	}
+	body #ensModalWrapper {
+		position: fixed;
+		max-height: 100vh;
+		width: 100%;
+		max-width: 100%;
+		padding: 0px;
+	    border-radius: 0px;
+	    top: unset !important;
+	}
+	body #ensModalWrapperInner {
+		margin: 0 auto;
+	    display: flex;
+	    width: 100%;
+	    max-width: 1440px;
+	}
+	body #ensModalWrapper .ensModal .ensTitle {
+		left: 0px;
+		font-size: 16px;
+		padding-bottom: 0px;
+		margin: 0;
+	}
+	body #ensModalWrapper .ensModal .consentDescription {
+		font-size: 12px;
+		line-height: unset;
+	}
+	body #ensModalWrapper .ensModal .consentDescription p {
+		font-size: 12px !important;
+	    margin: 0 !important;
+	    margin-bottom: 6px !important;
+	    font-weight: unset;
+	}
+	body #ensModalWrapper .ensModal .description {
+		font-size: 12px;
+		margin-top: 10px;
+	}
+	body #ensModalWrapper .ensModal {
+		padding: 20px;
+		max-height: 100vh;
+		font-size: 14px;
+	}
+	body #ensModalWrapper .ensModal hr {
+		margin-top: 12px;
+    	margin-bottom: 12px;
+	}
+	body #ensModalWrapper .ensToggleRowWrapper {
+		max-height: unset;
+	}
+	body #ensModalWrapper .ensToggleRowTitle {
+		width: 80%;
+	}
+	body #ensModalWrapper .ensModal .card {
+		width: 40px;
+		bottom: 3px;
+		right: -10px;
+	}
+	body #ensModalWrapper .ensModal .switch {
+		width: 40px;
+    	height: 24px;
+	}
+	body #ensModalWrapper .ensModal .toggle {
+		height: 20px;
+    	width: 20px;
+    	top: 2px;
+    	left: 2px;
+	}
+	body #ensModalWrapper .ensModal input[type='checkbox']:checked ~ .toggle {
+		left: 18px;
+	}
+	body #ensModalWrapper .ensButtons .button {
+		margin-left: 0px;
+	}
+	body #ensModalWrapper .ensButtons {
+		font-size: 18px;
+		margin-top: 10px;
+		float: left;
+	}
+	body #ensModalWrapper #ensAcceptAll {
+		width: calc(50vw - 25px);
+		margin-left: 10px;
+	}
+	body #ensModalWrapper #ensSave{
+		width: calc(50vw - 25px);
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	body #ensNotifyBanner .ensButtons {
+		font-size: 14px
+	}
+	body #ensModalWrapper .ensModal {
+		font-size: 14px;
+	}
+	body #ensModalWrapper .ensModal hr {
+		margin-top: 10px;
+	}
+	body #ensModalWrapper .ensToggleRow {
+		margin-bottom: 0px;
+	}
+	body #ensModalWrapper .ensToggleLabel {
+		margin-bottom: 10px;
+	}
+	body #ensModalWrapper .ensModal .card {
+		bottom: 5px;
+	}
+	body #ensModalWrapper .ensButtons {
+		margin-top: 14px;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	body #ensModalWrapper {
+		background-color: #FFF;
+	    height: max-content;
+	    top: 0 !important;
+	    right: 0;
+	    bottom: 0;
+	    left: 0 !important;
+	    width: 100%;
+	    max-width: 100%;
+	    box-shadow: unset;
+	    position: fixed;
+	    border: 0;
+	    border-radius: 0;
+	    border-bottom: 1px solid #63666A;
+	    padding: 2% 2% 0 2%;
+	    line-height: unset;
+	    z-index: 9999999999;
+	}
+	body #ensModalWrapper .ensModal .ensTitle {
+		padding-bottom: 0;
+		margin: 0;
+		font-size: 20px;
+	}
+	body #ensModalWrapper .ensModal .consentDescription {
+		display: inline-flex;
+	}
+	body #ensModalWrapper .ensModal .consentDescription p {
+		margin-bottom: 20px;
+		margin-right: 6px;
+		font-size: 16px;
+	}
+	body #ensModalWrapper .ensToggleRow {
+		border: 1px solid #999999;
+		display: inline-block;
+		width: 49.5%;
+		height: 170px;
+    	padding: 14px;
+	}
+	body #ensModalWrapper .ensToggleRow:first-of-type {
+		margin-right: 1%;
+		float: left;
+	}
+	body #ensModalWrapper .ensToggleRow:last-of-type {
+		border: none;
+		width: 80%;
+		height: unset;
+    	padding: unset;
+    	margin-bottom: 0;
+    	margin-top: 10px;
+	}
+	body #ensModalWrapper .ensModal hr {
+		display: none;
+	}
+	body #ensModalWrapper .ensModal .description {
+		display: block !important;
+	}
+	body #ensModalWrapper #defaultdescription {
+		max-width: 90%;
+	}
+	body #ensModalWrapper .ensToggleRowTitle {
+		width: 0;
+		font-size: 16px !important;
+	}
+	body #ensModalWrapper .ensToggleLabel:after {
+		display: none;
+	}
+	body #ensModalWrapper .ensButtons {
+		margin-top: 0;
+    	position: relative;
+    	bottom: 26px;
+	}
+	body #ensModalWrapper .ensButtons .button {
+		margin-left: 10px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+	body #ensNotifyBanner #ensBannerDescription {
+		width: 78%;
+	}
+	body #ensNotifyBanner .ensButtons {
+		font-size: 16px;
+		margin-top: 15px;
+	}
+	body #ensNotifyBanner .ensButtons .button {
+		height: 44px;
+	}
+	body #ensNotifyBanner .ensButtons #ensOpenModal {
+		margin-bottom: 16px;
+	}
+	body #ensNotifyBanner #ensNotifyBannerInner {
+		width: unset;
+	}
+	body #ensModalWrapper {
+		position: fixed;
+		padding: 4% 4% 0 4%;
+	}
+	body #ensModalWrapper .ensModal .consentDescription {
+		display: block;
+	}
+	body #ensModalWrapper .ensModal .consentDescription p:first-of-type {
+		margin-bottom: 9px;
+	}
+	body #ensModalWrapper .ensToggleRow {
+		height: 270px;
+	}
+	body #ensModalWrapper .ensToggleRow:last-of-type {
+		width: 100%;
+	}
+	body #ensModalWrapper #defaultdescription {
+		max-width: 100%;
+	}
+	body #ensModalWrapper .ensButtons {
+		bottom: 0;
+    	margin-top: 15px;
+    	margin-bottom: 28px;
+	}
+}
+
+@media only screen and (min-width: 800px) and (max-width: 923px) {
+	body #ensModalWrapper .ensToggleRow {
+		height: 216px;
+	}
+}
+
+@media only screen and (min-width: 924px) and (max-width: 1024px) {
+	body #ensModalWrapper .ensToggleRow {
+		height: 195px;
+	}
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1250px) {
+	body #ensModalWrapper .ensButtons {
+		bottom: 44px;
+	}
+	body #ensModalWrapper #defaultdescription {
+		max-width: 90%;
+	}
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1397px) {
+	body #ensModalWrapper .ensButtons {
+    	bottom: 44px;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+    body #ensNotifyBanner .ensButtons #ensOpenModal {
+		width: calc(50vw - 17px);
+	}
+    body #ensNotifyBanner .ensButtons #ensCloseBanner{
+        width: calc(50vw - 38px);
+    }
+}
+</style>
+<script type="application/ld+json">
+	{ "@context": "https://schema.org", "@type": "Organization", "name": "News Sentiment", "url": "https://www.google.co.uk/", "logo": "https://cdn-images-1.medium.com/max/800/1*NF6AdPk6sOMNNbQE5glvEQ.png" }
+</script>
+<style type="text/css">
+	body{display:none}#sticky-nav.fixed{position:fixed;width:100%;top:0;left:0;z-index:1000}#sticky-nav.fixed .cookieContent{max-height:50px;height:50px}@media (max-width:555px){#sticky-nav.fixed .cookieContent{max-height:70px;height:70px}}#sticky-nav.fixed .cookieContent .cookieInfo>p{font-size:13px; line-height: 1.2em;}@media (max-width:375px){#sticky-nav.fixed .cookieContent .cookieInfo>p{font-size:12px;padding:0 0 5px 5px;}}#sticky-nav.fixed #sticky-nav-wrapper{position:relative}#sticky-nav.fixed #sticky-nav-wrapper .sticky-nav-scroller{position:fixed;width:100%}#sticky-nav.fixed #sticky-nav-wrapper .sticky-nav-scroller.stuckToTop{top:0!important}#sticky-nav.cookiePresent #sticky-nav-wrapper .sticky-nav-scroller.stuckToTop{top:50px!important}@media (max-width:555px){#sticky-nav.cookiePresent #sticky-nav-wrapper .sticky-nav-scroller.stuckToTop{top:70px!important}}#sticky-nav-clear{display:none}#sticky-nav-clear.fixed{position:relative;display:block;min-height:80px}
+	</style>
+	<link rel="stylesheet" id="coToolbarStyle" href="chrome-extension://cjabmdjcfcfdmffimndhafhblfmpjdpe/toolbar/styles/placeholder.css" type="text/css">
+	<script type="text/javascript" id="cosymantecbfw_removeToolbar">(function () {				var toolbarElement = {},					parent = {},					interval = 0,					retryCount = 0,					isRemoved = false;				if (window.location.protocol === 'file:') {					interval = window.setInterval(function () {						toolbarElement = document.getElementById('coFrameDiv');						if (toolbarElement) {							parent = toolbarElement.parentNode;							if (parent) {								parent.removeChild(toolbarElement);								isRemoved = true;								if (document.body && document.body.style) {									document.body.style.setProperty('margin-top', '0px', 'important');								}							}						}						retryCount += 1;						if (retryCount > 10 || isRemoved) {							window.clearInterval(interval);						}					}, 10);				}			})();
+</script>
+<style type="text/css">
+.ensCenter{text-align: center;}#ensModalWrapper{border: 1px solid #333;position: fixed;max-width: 80%;border: 1px solid #000;display: none;box-shadow: 5px 5px 5px grey;background-color:#fff;padding: 20px 0;z-index: 9999;}.ensModal {font-family: Roboto, 'Helvetica Neue', Helvetica, Arial;}.ensModal input[type='checkbox'] {position: absolute !important;height: 1px; width: 1px;overflow: hidden;clip: rect(1px, 1px, 1px, 1px);white-space: nowrap; /* added line */}.ensModal input[type='checkbox']:not(:focus):not(:active) {}.ensModal input[type='checkbox']:checked ~ .toggle {background: #fff;left: 36px;transition: .5s;}.ensModal input[type='checkbox']:checked ~ .switch {background: #43A047;transition: .5s;}.ensModal .switch {display: block;width: 50px;height: 15px;background: #939393;border-radius: 10px;position: absolute;top: 0;transition: .5s;}.ensModal .toggle {height: 17px;width: 17px;border-radius: 50%;background: white;position: absolute;top: -2px;left: -2px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);transition: .5s;}.ensModal .card {display: inline-block;margin: 9px;margin: 5px;width: 50px;height: 20px;text-align: center;position: relative;float:right;}.ensModal{font-size: 18px;color: #333;padding: 20px;}.ensToggleRow{margin-bottom: 10px;}.ensToggleLabel{margin-right: 5px;}.ensButtons{clear: both;margin-top: 15px;float: right;}.ensButtons .button{display: inline-block;position: relative;width: 120px;height: 32px;border-radius: 2px;font-size: 0.9em;background-color: #fff;color: #646464;margin-left: 20px;}.ensButtons .button.grey {background-color: #eee;}.ensButtons .button.blue {background-color: #2b5cac;color: #fff;}.ensButtons .button.raised {transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);transition-delay: 0.2s;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);}.ensButtons .button.raised:active {box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);transition-delay: 0s;}.ensModal .ensTitle {margin:5px;width:95%;color: #74736F;position: absolute;top:-5px;left:-5px;padding-left:5%;padding-top:13px;padding-bottom: 3px;text-align: center;}.ensModal .consentDescription {color:#333;font-size: 14px;}.ensModal hr {color: #C5C5C5}.ensModal .description {max-width:600px;font-size: 12px;marin-top:15px;clear: both;}.chevron::before {border-style: solid;border-width: 2px 2px 0 0;content: '';display: inline-block;height: 8px;margin: 0 5px 2px 0;position: relative;width: 8px;}.chevron.right:before {transform: rotate(45deg);}.chevron.bottom:before {margin-left: 2px;margin-bottom: 3px;transform: rotate(135deg);}.ensModal .ensTagsContent {display: none;padding: 0 0 0 20px;}.ensModal .tagContainer {color: #676767;padding: 7px 0 7px 7px;font-size: 15px;}.contactInfoLink {display: block;margin-bottom: 4px;}.ensToggleRowWrapper {max-height: 400px;overflow: auto;}</style><style type="text/css">.ensNotifyBanner{background-color: #191B23;color: #EDEDED;opacity: 0.8;width:60%;border-radius: 10px;padding:20px;font-family: Roboto, 'Helvetica Neue', Helvetica, Arial;position: fixed;bottom:50px;display: none;z-index: 9999;}.ensButtons{clear: both;margin-top: 15px;float: right;}.ensButtons .button{display: inline-block;position: relative;width: 120px;height: 32px;border-radius: 2px;font-size: 0.9em;background-color: #fff;color: #646464;margin-left: 20px;text-align: center;}.ensButtons .button{cursor: pointer;}.ensButtons .button.grey {background-color: #eee;}.ensButtons .button.blue {background-color: #2b5cac;color: #fff;}.ensButtons .button.raised {transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);transition-delay: 0.2s;box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);}.ensButtons .button.raised:active {box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);transition-delay: 0s;}.ensClear{ clear:both;}.ensModalLink{  cursor: pointer; text-decoration: underline;}.ensModalLink:hover{  color: #2b5cac;}
+</style>
+<script type="text/javascript" src="//javascript:;">
+</script>
+</head>
+<body class="hp-body home-page" style="margin-top: 0px; display: block;">
+	<header id="global-navigation" class="nm-l global-enable-stickyNav"><div class="container-fluid header-footer-container"><div class="row no-gutters">
+		<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 global-nav-left">
+		<ul>
+			<li><a href="/"><strong>Home</strong></a></li>
+			<li class="show-for-mobile"><a href="/business-express/home.html"></a></li>
+			<li class="hide-for-mobile"><a href="/business-express/home.html"></a></li>
+			<li><a href="/business/"></a></li>
+			<li><a href="https://www.experian.co.uk/privacy/consumer-information-portal/"></a></li>
+			<li><a href="/privacy-and-your-data.html" target="_blank"></a></li>
+		</ul>
+		</div>
+		<div class="col-lg-5 col-md-5 hidden-sm hidden-xs global-nav-right">
+			<ul>
+				<li><a class="global-site" href="#" data-toggle="modal" data-target="#globalModal">Global Sites</a></li>
+				<li><a href="/"><strong>United Kingdom</strong></a></li>
+			</ul>
+		</div>
+		</div>
+		</div>
+	</header>
+	<header><a href="#maincontent" class="skip-link">Skip to main content</a>
+		<div class="navigation-mobile" data-sticky-mobile="true">
+			<a href="https://www.experian.co.uk" class="left logo" aria-label="Experian Logo">
+				<img src="https://cdn-images-1.medium.com/max/800/1*NF6AdPk6sOMNNbQE5glvEQ.png" alt="Experian Logo">
+			</a>
+			<div class="mobile-header-buttons">
+				<a href="{% url 'users:login' %}" aria-label="Log in Experian" class="navigation-login">
+					<svg class="icon-login" xmlns="http://www.w3.org/2000/svg" width="23" height="26"><g fill="none" fill-rule="evenodd"><path d="M-29-15h80v80h-80z"></path><path stroke="#fff" stroke-linejoin="round" d="M10 15.5h3a9.5 9.5 0 0 1 9.5 9.5v.5H.5V25a9.5 9.5 0 0 1 9.5-9.5z"></path><path stroke="#fff" d="M11.5.5c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6"></path></g></svg> <span>Log in</span> 
+				</a>
+				<a href="{% url 'users:register' %}" aria-label="Sign up to Get your free score" class="navigation-sign-up-mobile"><svg class="icon-login" xmlns="http://www.w3.org/2000/svg" width="23" height="26"><g fill="none" fill-rule="evenodd"><path d="M-29-15h80v80h-80z"></path><path stroke="#fff" stroke-linejoin="round" d="M10 15.5h3a9.5 9.5 0 0 1 9.5 9.5v.5H.5V25a9.5 9.5 0 0 1 9.5-9.5z"></path><path stroke="#fff" d="M11.5.5c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6"></path></g></svg> <span>Sign up</span> 
+				</a>
+				<a class="navigation-toggle-wrapper"><div class="navigation-toggle" aria-hidden="true"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></div><span class="ce-blue">Menu</span>
+				</a>
+			</div>
+			</div>
+			<nav id="local-navigation" class="" role="navigation" aria-label="Site navigation">
+				<div class="navigation-container"><div class="header-bg" style="height: 0px; opacity: 0;"></div><div class="navigation-search-container" style="display: none;"><form autocomplete="off" method="get" action="https://search.experian.co.uk/" name="search" role="search"><input type="text" class="form-control" name="q" placeholder="Search" id="srch-term"> <input type="hidden" name="tmpl" value="personal"> <input type="hidden" name="sp_cs" value="UTF-8"> <input type="hidden" name="sp_c" value="10"> <button class="btn btn-default" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="#22498D" fill-rule="evenodd" d="M22.703 22.707a.997.997 0 0 1-1.414 0l-6.678-6.678a9.2 9.2 0 0 0 .749-.665c.239-.239.459-.49.665-.749l6.678 6.678a.999.999 0 0 1 0 1.414m-19.364-8.05A8 8 0 1 1 14.654 3.343 8 8 0 0 1 3.34 14.657m20.07 5.929l-6.8-6.8c2.186-3.475 1.774-8.127-1.25-11.15A8.94 8.94 0 0 0 8.997 0a8.94 8.94 0 0 0-6.364 2.636c-3.51 3.509-3.51 9.219 0 12.728A8.94 8.94 0 0 0 8.996 18a8.934 8.934 0 0 0 4.787-1.385l6.799 6.799c.378.378.88.586 1.414.586.534 0 1.036-.208 1.414-.586.378-.378.586-.88.586-1.414 0-.534-.208-1.036-.586-1.414"></path></svg></button></form>
+				</div>
+			<span class="target">
+			</span>
+			<div class="navigation-mobile-expanded"><div class="mobile-header-buttons"><a href="{% url 'users:login' %}" aria-label="Log in Experian" class="navigation-login"><svg class="icon-login" xmlns="http://www.w3.org/2000/svg" width="23" height="26"><g fill="none" fill-rule="evenodd"><path d="M-29-15h80v80h-80z"></path><path stroke="#fff" stroke-linejoin="round" d="M10 15.5h3a9.5 9.5 0 0 1 9.5 9.5v.5H.5V25a9.5 9.5 0 0 1 9.5-9.5z"></path><path stroke="#fff" d="M11.5.5c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6"></path></g></svg> <span>Log in</span></a>
+			</div>
+			</div>
+			<div class="navigation-content-container">
+				<ul class="navigation level-1"><a href="https://www.experian.co.uk" class="left logo" aria-label="Experian Logo">
+					<img src="https://cdn-images-1.medium.com/max/800/1*NF6AdPk6sOMNNbQE5glvEQ.png" alt="Logo"></a>
+					<li data-category="Credit score &amp; report"><span class="back-to-main" role="button">Back</span> <span class="navigation-item">News Sentiment Report</span><div class="navigation-wrapper level-2 has-grey"><div class="navigation-columns"><div class="navigation-column"><div class="left"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><g fill="none" fill-rule="evenodd"><g fill="#1D4F91" transform="translate(8 6)"><path d="M14.503 11.024c-.029-1.905-1.73-3.534-3.737-3.534A3.743 3.743 0 0 0 7 11.227a3.748 3.748 0 0 0 3.766 3.766 3.676 3.676 0 0 0 2.603-1.06.641.641 0 0 0 .218-.467.64.64 0 0 0-.625-.625c-.189 0-.364.117-.494.248-.422.45-1.047.654-1.702.654-1.25 0-2.268-.857-2.486-2.049h5.642l.031-.008a.452.452 0 0 0 .064-.012.67.67 0 0 0 .486-.65m-3.737-2.298c1.128 0 2.065.724 2.384 1.732H8.367a2.491 2.491 0 0 1 2.399-1.732"></path><rect width="3" height="3" x="13" y="3" rx="1"></rect><rect width="5" height="5" x="6" rx="1"></rect><rect width="5" height="5" y="5" rx="1"></rect><rect width="4" height="4" x="1" y="12" rx="1"></rect><rect width="4" height="4" x="5" y="17" rx="1"></rect></g><circle cx="16" cy="16" r="15.5" stroke="#7795BD"></circle></g></svg><div class="navigation-title ml-10">Beta</div><ul class="sub-navigation ml-10"><li><a href="www.google.com">Beta</a></li><li><a href="www.google.com">Beta</a></li><li><a href="www.google.com">Statutory Report</a></li><li><a href="www.google.com">Beta</a></li></ul></div><div class="navigation-bottom-links"><a href="www.google.com"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><g fill="none" fill-rule="evenodd" transform="translate(1)"><path stroke="#1D4F91" stroke-linecap="round" stroke-linejoin="round" d="M7.245 23.364C5.415 22.328 4.5 20.457 4.5 19.5l1-3-4.98-.996L.5 15.5c0-3 4.5-8 12-8 1-2 8.5-9.5 17-6h0-.001l.127.318c3.187 8.368-4.151 15.694-6.126 16.682 0 7.5-5 12-8 12l-1-5-3 1c-2 0-3-2-4-3z"></path><path fill="#FFF" stroke="#1D4F91" stroke-linejoin="round" d="M2.5 28.5c0-1.333.333-2.333 1-3 1-1 7-8 8-9s2-1 3 0 1 2 0 3-8 7-9 8c-.667.667-1.667 1-3 1z"></path><circle cx="20" cy="11" r="3.5" fill="#7795BD" stroke="#1D4F91"></circle><path stroke="#7795BD" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 23L2 22M8 30L9 29"></path></g></svg> <span class="mr-10">Beta</span></a><div class="badge-primary">Beta</div></div>
+				</div>
+				<div class="navigation-column"><div class="left"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><g fill="none" fill-rule="evenodd"><circle cx="16" cy="16" r="15.5" stroke="#7795BD"></circle><path fill="#1D4F91" fill-rule="nonzero" d="M19 9.488c0 .416-.148.772-.444 1.068a1.43 1.43 0 0 1-1.044.444 1.45 1.45 0 0 1-1.08-.444A1.475 1.475 0 0 1 16 9.488c0-.4.144-.748.433-1.044A1.445 1.445 0 0 1 17.512 8c.276 0 .528.067.755.202.227.135.406.311.537.53.13.22.196.472.196.756zm-.103 10.428c-.317.708-.814 1.432-1.49 2.173-.675.74-1.521 1.11-2.538 1.11-.684 0-1.197-.168-1.538-.506a1.633 1.633 0 0 1-.513-1.202c0-.472.15-1.127.452-1.966l1.574-4.309c.155-.39.232-.655.232-.793a.334.334 0 0 0-.11-.244.338.338 0 0 0-.244-.11c-.277 0-.58.216-.91.647a6.79 6.79 0 0 0-.738 1.16H12c.48-1.075 1.105-1.907 1.874-2.497.769-.59 1.536-.885 2.3-.885.538 0 .983.132 1.337.397.354.264.531.616.531 1.056 0 .464-.089.932-.268 1.404l-1.904 5.114c-.13.35-.196.635-.196.855 0 .097.039.193.116.287.078.093.161.14.25.14.245 0 .497-.13.757-.39.26-.261.586-.741.977-1.441h1.123z"></path></g></svg><div class="navigation-title">Helpful Information</div><ul class="sub-navigation"><li><a href="/consumer/experian-credit-score.html">Beta</a></li><li><a href="/consumer/experian-credit-report.html">Beta</a></li><li><a href="/consumer/guides/improve-credit-score.html">Beta</a></li><li><a href="/consumer/guides/refused-credit.html">Beta</a></li><li><a href="/consumer/boost-difference.html">Beta</a></li></ul></div><div class="navigation-bottom-links"><a href="/consumer/guides.html" class="blue"><svg xmlns="http://www.w3.org/2000/svg" height="32" width="32" class="svg-icon"><g transform="translate(-4)" fill-rule="evenodd" fill="none"><rect rx="2" stroke="#7795bd" y="2.5" x="6.5" height="29" width="22"></rect><path d="M6.5.5h18a2 2 0 012 2V22L19 29.5H6.5a2 2 0 01-2-2v-25a2 2 0 012-2z" stroke-linejoin="round" stroke="#1d4f91" fill="#fff"></path><path d="M7.5 12.5h16m-16 6h10m-10-3h7" stroke-linecap="round" stroke="#7795bd"></path><path d="M19 29.5h-.5v-7a1 1 0 011-1h7v.5" stroke-linejoin="round" stroke="#1d4f91"></path><rect rx="1" fill="#7795bd" y="3" x="7" height="7" width="7"></rect></g></svg> <span>Beta</span></a></div>
+			</div>
+			
+			</ul><div class="header-buttons right"><a href="" aria-label="Search Experian" class="navigation-search" role="search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="#22498D" fill-rule="evenodd" d="M22.703 22.707a.997.997 0 0 1-1.414 0l-6.678-6.678a9.2 9.2 0 0 0 .749-.665c.239-.239.459-.49.665-.749l6.678 6.678a.999.999 0 0 1 0 1.414m-19.364-8.05A8 8 0 1 1 14.654 3.343 8 8 0 0 1 3.34 14.657m20.07 5.929l-6.8-6.8c2.186-3.475 1.774-8.127-1.25-11.15A8.94 8.94 0 0 0 8.997 0a8.94 8.94 0 0 0-6.364 2.636c-3.51 3.509-3.51 9.219 0 12.728A8.94 8.94 0 0 0 8.996 18a8.934 8.934 0 0 0 4.787-1.385l6.799 6.799c.378.378.88.586 1.414.586.534 0 1.036-.208 1.414-.586.378-.378.586-.88.586-1.414 0-.534-.208-1.036-.586-1.414"></path></svg> <span>Search</span> </a><a href="{% url 'users:login' %}" aria-label="Log in Experian" class="navigation-login">Log in</a> <a class="btn--main-cta navigation-sign-up" title="Sign up free" href="{% url 'users:register' %}">Sign up free</a><div class="search-close-button"></div></div></div></div></nav></header>
+			<div id="maincontent"></div><div class="navigation-overlay" style="opacity: 0; top: 0px; visibility: hidden;"></div><div class="modal fade" id="globalModal" tabindex="-1" role="dialog" aria-labelledby="globalModalLabel"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="globalModalLabel">.</h4></div><div class="modal-body"><div class="global-sites-split"><ul><li><a href="//www.experian.com.ar/" target="_blank">Beta</a></li></ul></div></div><div class="modal-footer"><button type="button" class="btn btn-blue" data-dismiss="modal">Close</button></div></div></div></div><main><div class="covid-banner"><div class="text-wrapper"><p class="m-0 black">This is a beta version </p>
+
+			</div><span class="close-button" title="close"></span></div><section class="boost-takeover mb-60"><div class="boost-hero-section"><div class="boost-bg"></div><div class="container"><span class="new-badge green">Beta Version</span><h1>Get your News Sentiment Score</h1><p>And see if you are exposed to <strong>Negative</strong> news</p><a class="btn--main-cta mt-10" title="Sign up free" href="{% url 'users:register' %}">Sign up free</a>
+
+			</div>
+			<svg class="rocket" width="133" height="172" viewBox="0 0 133 172" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M96.0268 55.8046C96.7093 60.7103 97.0592 65.6478 97.2314 70.5974C97.3105 72.7423 97.3491 74.8872 97.3472 77.032V77.2908C97.3472 77.8982 97.3472 78.5085 97.3472 79.116C97.3472 79.2425 97.3472 79.3719 97.3472 79.4984C97.3472 80.0721 97.3368 80.6459 97.3161 81.2196V81.6302C97.301 82.2058 97.285 82.7804 97.2681 83.3541C97.2681 83.4779 97.2681 83.5988 97.2681 83.7226C97.2455 84.3385 97.2229 84.9572 97.1975 85.5731C97.1975 85.6434 97.1975 85.7165 97.1975 85.7868C97.107 87.9045 96.9827 90.0053 96.833 92.0949C96.8316 92.1211 96.8316 92.1474 96.833 92.1736C96.7859 92.8205 96.7359 93.4645 96.6832 94.1057C96.6832 94.2182 96.6634 94.3335 96.655 94.4488C96.6097 95.0112 96.5627 95.5653 96.5137 96.1109C96.5137 96.2571 96.4854 96.3921 96.4741 96.5468C96.427 97.0717 96.378 97.5949 96.3272 98.1161C96.3102 98.2679 96.2961 98.4226 96.282 98.5745L96.1209 100.141L96.0785 100.549L95.8921 102.236C95.8921 102.323 95.8723 102.408 95.8638 102.495C95.6378 104.46 95.3957 106.392 95.1377 108.291C95.1207 108.406 95.1037 108.522 95.0896 108.637C95.019 109.138 94.9512 109.635 94.8805 110.128C94.8579 110.291 94.8325 110.454 94.8099 110.617L94.6149 111.944C94.5867 112.124 94.5612 112.304 94.533 112.487C93.4028 119.889 92.1171 126.931 90.922 132.418C101.376 135.379 111.995 151.826 117.459 161.751C118.687 163.981 120.482 165.853 122.663 167.178C124.844 168.504 127.337 169.237 129.892 169.305C130.256 169.314 130.619 169.247 130.956 169.11C131.294 168.973 131.599 168.767 131.853 168.506C132.106 168.245 132.303 167.935 132.43 167.594C132.557 167.254 132.611 166.891 132.59 166.529L132.005 156.686C130.129 141.811 132.593 96.5018 100.113 80.9159" fill="#E63888"></path><path d="M89.9813 123.835C89.9813 123.835 113.865 135.011 121.692 159.641C121.852 160.114 121.914 160.613 121.873 161.11C121.832 161.607 121.69 162.09 121.455 162.53C120.658 163.936 118.677 165.078 113.758 161.517L83.2142 131.116L89.9813 123.835Z" fill="#6D2077"></path><path d="M36.5298 55.8046C35.8473 60.7103 35.5353 65.6478 35.3631 70.5974C35.284 72.7423 35.2454 74.8872 35.2473 77.032V77.2908C35.2473 77.8982 35.2473 78.5085 35.2473 79.116C35.2473 79.2425 35.2473 79.3719 35.2473 79.4984C35.2473 80.0721 35.2576 80.6459 35.2784 81.2196V81.6302C35.2934 82.2058 35.3094 82.7804 35.3264 83.3541C35.3264 83.4779 35.3264 83.5988 35.3264 83.7226C35.349 84.3385 35.3716 84.9572 35.397 85.5731C35.397 85.6434 35.397 85.7165 35.397 85.7868C35.4875 87.9045 35.6118 90.0053 35.7615 92.0949C35.7629 92.1211 35.7629 92.1474 35.7615 92.1736C35.8086 92.8205 35.8585 93.4645 35.9113 94.1057C35.9113 94.2182 35.9311 94.3335 35.9395 94.4488C35.9847 95.0112 36.0318 95.5653 36.0808 96.1109C36.0808 96.2571 36.1091 96.3921 36.1204 96.5468C36.1675 97.0717 36.2164 97.5949 36.2673 98.1161C36.2843 98.2679 36.2984 98.4226 36.3125 98.5745L36.4736 100.141L36.5159 100.549L36.7024 102.236C36.7024 102.323 36.7222 102.408 36.7307 102.495C36.9567 104.46 37.1988 106.392 37.4568 108.291C37.4738 108.406 37.4908 108.522 37.5049 108.637C37.5755 109.138 37.6433 109.635 37.714 110.128C37.7366 110.291 37.762 110.454 37.7846 110.617L37.9796 111.944C38.0078 112.124 38.0332 112.304 38.0615 112.487C39.1917 119.889 40.4773 126.931 41.6725 132.418C31.2181 135.379 20.5997 151.826 15.1352 161.751C13.9071 163.981 12.1129 165.853 9.9315 167.178C7.75009 168.504 5.25769 169.237 2.70284 169.305C2.33823 169.314 1.97569 169.247 1.63811 169.11C1.30054 168.973 0.995284 168.767 0.741668 168.506C0.488052 168.245 0.291591 167.935 0.164698 167.594C0.037804 167.254 -0.0167579 166.891 0.00446815 166.529L0.589355 156.686C2.46551 141.811 0.00164749 96.5018 32.4811 80.9159" fill="#E63888"></path><path d="M42.6132 123.835C42.6132 123.835 18.729 135.011 10.9023 159.641C10.742 160.114 10.6804 160.613 10.7212 161.11C10.762 161.607 10.9044 162.09 11.1397 162.53C11.9365 163.936 13.9172 165.078 18.8364 161.517L49.3804 131.116L42.6132 123.835Z" fill="#6D2077"></path><path d="M66.2015 31.2128C58.541 31.2128 41.9528 34.4067 35.4254 52.3575C32.8011 59.3449 32.899 98.8403 43.6075 140.93H88.7955C99.504 98.8403 99.602 59.3449 96.9776 52.3575C90.4502 34.4067 73.862 31.2128 66.2015 31.2128Z" fill="white"></path><path d="M83.4874 158.428H49.4842C49.1279 158.429 48.7821 158.315 48.5038 158.105C48.2256 157.896 48.0315 157.603 47.9536 157.276L44.0378 140.838C43.9865 140.622 43.9874 140.398 44.0405 140.183C44.0935 139.967 44.1973 139.765 44.3443 139.593C44.4912 139.42 44.6775 139.28 44.8894 139.184C45.1012 139.089 45.3333 139.039 45.5684 139.039H87.8945C88.1331 139.039 88.3684 139.091 88.5826 139.189C88.7967 139.288 88.9842 139.432 89.1306 139.609C89.277 139.786 89.3785 139.993 89.4275 140.213C89.4765 140.432 89.4716 140.66 89.4132 140.877L85.0091 157.313C84.9236 157.632 84.7274 157.914 84.4518 158.117C84.1762 158.319 83.8368 158.428 83.4874 158.428Z" fill="#E63888"></path><mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="90" y="55" width="43" height="115"><path d="M95.9486 55.8046C96.6311 60.7103 97.0592 65.6478 97.2314 70.5974C97.3105 72.7423 97.3491 74.8872 97.3472 77.032V77.2908C97.3472 77.8982 97.3472 78.5085 97.3472 79.116C97.3472 79.2425 97.3472 79.3719 97.3472 79.4984C97.3472 80.0721 97.3368 80.6459 97.3161 81.2196V81.6302C97.301 82.2058 97.285 82.7804 97.2681 83.3541C97.2681 83.4779 97.2681 83.5988 97.2681 83.7226C97.2455 84.3385 97.2229 84.9572 97.1975 85.5731C97.1975 85.6434 97.1975 85.7165 97.1975 85.7868C97.107 87.9045 96.9827 90.0053 96.833 92.0949C96.8316 92.1211 96.8316 92.1474 96.833 92.1736C96.7859 92.8205 96.7359 93.4645 96.6832 94.1057C96.6832 94.2182 96.6634 94.3335 96.655 94.4488C96.6097 95.0112 96.5627 95.5653 96.5137 96.1109C96.5137 96.2571 96.4854 96.3921 96.4741 96.5468C96.427 97.0717 96.378 97.5949 96.3272 98.1161C96.3102 98.2679 96.2961 98.4226 96.282 98.5745L96.1209 100.141L96.0785 100.549L95.8921 102.236C95.8921 102.323 95.8723 102.408 95.8638 102.495C95.6378 104.46 95.3957 106.392 95.1377 108.291C95.1207 108.406 95.1037 108.522 95.0896 108.637C95.019 109.138 94.9512 109.635 94.8805 110.128C94.8579 110.291 94.8325 110.454 94.8099 110.617L94.6149 111.944C94.5867 112.124 94.5612 112.304 94.533 112.487C93.4028 119.889 92.1171 126.931 90.922 132.418C101.376 135.379 111.995 151.826 117.459 161.751C118.687 163.981 120.482 165.853 122.663 167.178C124.844 168.504 127.337 169.237 129.892 169.305C130.256 169.314 130.619 169.247 130.956 169.11C131.294 168.973 131.599 168.767 131.853 168.506C132.106 168.245 132.303 167.935 132.43 167.594C132.557 167.254 132.611 166.891 132.59 166.529L132.005 156.686C130.129 141.811 132.593 96.5018 100.113 80.9159" fill="#E02377"></path></mask><path d="M63.0866 171.137C64.0335 171.156 73.0199 171.806 73.1226 166.606C73.2254 161.405 73.2797 82.9464 73.2797 82.9464C73.2806 80.6425 71.6259 78.5088 69.3448 78.5651L65.8651 78.4928C65.3257 78.5064 64.6441 78.7952 64.1519 79.0186C63.6597 79.2419 63.2165 79.5619 62.8482 79.9601C62.48 80.3582 62.194 80.8264 62.0071 81.3373C61.8201 81.8482 61.736 82.3915 61.7595 82.9355L65.3966 167.189C65.4921 169.418 62.1396 171.118 63.0866 171.137Z" fill="#6D2077"></path><path d="M62.8275 171.143C61.7543 171.122 60.7325 170.679 59.9823 169.908C59.2321 169.138 58.8136 168.103 58.8172 167.026L58.918 82.5398C58.9187 81.9942 59.0278 81.4541 59.2388 80.9512C59.4498 80.4484 59.7585 79.9927 60.147 79.6108C60.5355 79.2289 60.9959 78.9285 61.5013 78.7272C62.0067 78.5258 62.5471 78.4274 63.0908 78.4379L66.7451 78.5102C67.291 78.5211 67.8292 78.6416 68.3279 78.8644C68.8267 79.0872 69.276 79.4079 69.6493 79.8075C70.0227 80.2072 70.3126 80.6777 70.502 81.1915C70.6913 81.7052 70.7764 82.2519 70.752 82.7991L66.9912 167.213C66.9451 168.284 66.484 169.294 65.7061 170.028C64.9282 170.762 63.8952 171.162 62.8275 171.143Z" fill="#E63888"></path><mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="55" width="42" height="115"><path d="M36.6459 55.8046C35.9634 60.7103 35.5353 65.6478 35.3631 70.5974C35.284 72.7423 35.2454 74.8872 35.2473 77.032V77.2908C35.2473 77.8982 35.2473 78.5085 35.2473 79.116C35.2473 79.2425 35.2473 79.3719 35.2473 79.4984C35.2473 80.0721 35.2576 80.6459 35.2784 81.2196V81.6302C35.2934 82.2058 35.3094 82.7804 35.3264 83.3541C35.3264 83.4779 35.3264 83.5988 35.3264 83.7226C35.349 84.3385 35.3716 84.9572 35.397 85.5731C35.397 85.6434 35.397 85.7165 35.397 85.7868C35.4875 87.9045 35.6118 90.0053 35.7615 92.0949C35.7629 92.1211 35.7629 92.1474 35.7615 92.1736C35.8086 92.8205 35.8585 93.4645 35.9113 94.1057C35.9113 94.2182 35.9311 94.3335 35.9395 94.4488C35.9847 95.0112 36.0318 95.5653 36.0808 96.1109C36.0808 96.2571 36.1091 96.3921 36.1204 96.5468C36.1675 97.0717 36.2164 97.5949 36.2673 98.1161C36.2843 98.2679 36.2984 98.4226 36.3125 98.5745L36.4736 100.141L36.5159 100.549L36.7024 102.236C36.7024 102.323 36.7222 102.408 36.7307 102.495C36.9567 104.46 37.1988 106.392 37.4568 108.291C37.4738 108.406 37.4908 108.522 37.5049 108.637C37.5755 109.138 37.6433 109.635 37.714 110.128C37.7366 110.291 37.762 110.454 37.7846 110.617L37.9796 111.944C38.0078 112.124 38.0332 112.304 38.0615 112.487C39.1917 119.889 40.4773 126.931 41.6725 132.418C31.2181 135.379 20.5997 151.826 15.1352 161.751C13.9071 163.981 12.1129 165.853 9.9315 167.178C7.75009 168.504 5.25769 169.237 2.70284 169.305C2.33823 169.314 1.97569 169.247 1.63811 169.11C1.30054 168.973 0.995284 168.767 0.741668 168.506C0.488052 168.245 0.291591 167.935 0.164698 167.594C0.037804 167.254 -0.0167579 166.891 0.00446815 166.529L0.589355 156.686C2.46551 141.811 0.00164749 96.5018 32.4811 80.9159" fill="#E02377"></path></mask><path d="M66.2972 69.9922C72.9664 69.9922 78.3728 64.593 78.3728 57.9328C78.3728 51.2725 72.9664 45.8733 66.2972 45.8733C59.6281 45.8733 54.2217 51.2725 54.2217 57.9328C54.2217 64.593 59.6281 69.9922 66.2972 69.9922Z" fill="#E63888"></path><path d="M66.2973 66.4034C71.0049 66.4034 74.8212 62.5922 74.8212 57.8909C74.8212 53.1895 71.0049 49.3783 66.2973 49.3783C61.5896 49.3783 57.7733 53.1895 57.7733 57.8909C57.7733 62.5922 61.5896 66.4034 66.2973 66.4034Z" fill="#2E3548"></path><path d="M35.1973 81.3422L35.172 79.3082C35.172 79.1814 35.172 79.0518 35.172 78.9251C35.172 78.3166 35.172 77.7052 35.172 77.0967V76.8319C35.172 74.6852 35.2103 72.5366 35.2869 70.3861C35.4577 65.4279 35.8824 60.4818 36.5593 55.5676C39.8383 42.9775 51.9119 33.6356 66.306 33.6356C80.5404 33.6356 92.5018 42.769 95.9378 55.145C96.7521 60.8305 97.2313 66.5594 97.3727 72.3018C97.3895 72.8652 97.4007 73.4287 97.4119 73.9752C97.4119 74.1076 97.4119 74.2401 97.4119 74.3725C97.4231 74.9584 97.4297 75.5444 97.4316 76.1304C97.4316 76.2318 97.4316 76.3332 97.4316 76.4346C97.4316 77.0854 97.4316 77.7334 97.4316 78.3842V78.5025C97.4316 79.4463 97.4119 80.4098 97.3923 81.3422H100.119C100.716 49.1443 94.2338 15.1716 67.9511 0.462904C67.4121 0.159386 66.8047 0 66.1869 0C65.5691 0 64.9617 0.159386 64.4227 0.462904C38.3754 15.1293 31.893 49.3556 32.4732 81.3422H35.1973Z" fill="#E63888"></path></svg>
+			</div>
+			<section class="boost-learn-more bg-grey"><div class="container"><h3>What is News Sentiment?</h3><p>Add news websites you have read and see an AI sentiment score</p><a class="btn btn--f1 btn-center blue-border mb-20" title="Learn more" href="{% url 'users:login' %}">Login here</a></div></section></section><section id="section-2"><div class="site-wrap"><h2>A tool to see your news consumption</h2><div class="row"><div class="container center"><div class="benefits-item got-back"><svg width="450px" height="456px" viewBox="0 0 450 456" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="a" d="M0 .012h449.92v455.58H0z"></path><style type="text/css">@media (max-width: 768px) {
+                      #circles {
+                        display: none;
+                      }
+                    }</style></defs><g fill="none" fill-rule="evenodd"><g transform="translate(0 .202)"><mask id="b" fill="#fff"><use xlink:href="#a"></use></mask><path d="M444.949 137.13c-2.027-13.346-4.912-26.508-9.052-39.332-10.679-33.075-30.504-64.067-60.113-82.284-29.608-18.218-69.758-21.653-100.282-3.438-44.481 26.543-56.348 87.416-97.392 119.048-3.59 2.767-7.505 5.338-11.92 6.263-11.409 2.392-15.525-4.787-22.941-10.975-31.17-26.006-75.702-6.811-102.7 17.487-73.877 66.49-35.11 172.835 23.38 231.855 24.921 25.147 56.94 45.821 90.002 58.727a295.783 295.783 0 0015.766 5.643c24.85 8.113 50.867 12.995 77.158 14.292 25.266 1.246 51.854 3.01 76.702-3.742 35.138-9.55 73.906-32.38 87.862-67.473 7.43-18.682 18.04-35.756 24.343-54.96 13.462-41.02 14.87-84.667 13.923-127.1-.478-21.401-1.536-42.937-4.736-64.01" fill="#FEF5F9" mask="url(#b)"></path></g><path d="M246.958 399.98c12.588-15.545 20.462-30.307 20.462-30.307l-16.291-22.296s-9.393 18.79-17.971 32.798l13.8 19.805z" fill="#EEC6B5"></path><path d="M139.703 278.872c-9.214-46.665 5.672-112.418 5.672-112.418s2.788-13.424 4.11-23.576c1.322-10.152 1.926-20.31 4.622-29.167 2.696-8.856 2.577-12.707.789-13.698-1.788-.99-3.407 2.126-6.113 12.06-2.706 9.934-4.608 10.225-5.732 9.65-1.124-.574-1.83-25.167-5.783-25.151-3.952.016-2.266 6.653-1.43 16.67.835 10.016.477 9.808-1.373 10.1-1.851.291-3.553 1.251-5.383 4.982-1.83 3.731-5.1 2.06-3.132 11.625 1.969 9.565 2.83 20.476 1.722 31.33-1.913 18.735-12.63 43.154-15.123 73.204-1.003 12.09-.586 23.795.537 34.389h26.617z" fill="#E1A890"></path><path d="M384.845 364.846a161.001 161.001 0 00-10.973-6.426l-16.743 15.762c3.167 1.202 5.24 3.242 7.16 4.935a12.087 12.087 0 013.96 7.157c1.527 9.605 2.454 28.882.991 44.614 6.797-4.326 13.218-9.2 19.014-14.614 2.45-19.206 4.941-46.063-3.41-51.428M324.564 280.948h-23.689c1.642 25.202-11.594 26.244-11.594 26.244l47.293.774c-16.666-10.381-13.15-11.712-12.01-27.018" fill="#EEC6B5"></path><path d="M375.065 334.66a2.49 2.49 0 01-.013-.02l-.05-.084c-1.952-3.231-4.071-6.304-6.198-8.874-4.953-5.984-11.979-10.345-18.513-12.342-14.122-4.315-21.946-11.941-21.946-11.941-18.163 12.353-31.07-1.091-31.07-1.091-15.23 11.295-27.667 9.882-40.367 26.211-7.434 9.558-18.545 41.13-18.545 41.13l28.99 23.489c.064 21.502 1.094 4.042-.415 30.464-1.03 18.02-1.439 28.828-1.595 33.882 19.515.736 39.365.515 58.214-4.608 14.3-3.886 29.202-9.973 42.788-18.19-2.974-40.967-3.45-50.444-3.515-51.929l4.497 8.107 20.83-21.336c-1.778-11.956-5.314-19.94-13.092-32.869z" fill="#6D2077"></path><path d="M313.247 192.036c21.879-.664 39.403 15.365 42.24 51.701 1.838 23.533-.604 54.314-4.89 61.892-3.753 6.638-15.19-9.892-18.935-12.06-7.183-4.161-9.172.783-13.748-.28-5.097-1.185-7.98-6.772-12.884-5.63-24.895 5.791-24.63 18.664-31.248 14.247-1.802-1.202-9.245-24.208-5.012-55.238 1.874-13.738 6.694-53.486 44.477-54.632" fill="#43104C"></path><path d="M243.844 360.718s-2.044-17.698-16.636-31.422c.453-2.83.94-5.726 1.464-8.69l-14.27-.197c-.161-.08-.319-.161-.48-.24 0 0-.44-.32-.924.221l-78.545-1.079 4.366-70.899s-14.05 12.647-35.43 28.088c0 0 16.21 41.747 26.965 76.094-.49 16.887-1.576 40.106-3.883 69.457a260.381 260.381 0 0027.46 12.632 296.042 296.042 0 0015.766 5.644c20.284 6.622 41.344 11.09 62.697 13.214-5.642-21.485-10.703-42.7-10.054-74.191 4.125-4.247 11.53-11.324 21.504-18.632" fill="#1D4F91"></path><path d="M246.958 399.98a166.712 166.712 0 01-8.45 10.092c-8.548 9.394-47.77-3.783-65-9.06-14.093-4.314-23.152-13.199-35.984-13.15-8.525.032-11.533-6.241-9.596-10.406 1.432-3.08-1.963-3.546.098-6.554 3.55-5.179-1.197-3.408.665-9.17 1.863-5.76 6.274 2.238 10.565 1.81 4.291-.427-2.465-4.893-1.191-11.237 1.274-6.345 7.307 5.83 13.026 18.756 5.012 11.329 51.117 18.217 68.406 18.38a12.51 12.51 0 007.987-2.809c2.059-1.667 4.498-3.432 6.27-6.457l13.204 19.805z" fill="#EEC6B5"></path><path d="M218.313 369.872s30.497 71.316 52.792 54.677c4.996-3.728 10.818-29.596 10.16-87.003-.026-2.334.262-4.665.872-6.918 2.571-9.485 2.822-16.054 2.661-19.591-.098-2.166-1.91-3.906-4.076-3.788-.111.006-.217.017-.316.034-1.385.24-1.588 1.115-2.254 1.222-1.533.245-1.656-.457-2.94-.061-1.026.316-.84 1.04-1.793 1.758-.952.717-.844-.565-2.574.461-1.697 1.007.095 3.124-1.661 3.503 0 0-4.001-3.862-4.68 1.62-.45 3.635.017 10.151 6.185 19.903 3.814 6.03-10.789 58.318-13.382 58.474-2.57.155-12.517-26.312-16.995-37.706l-21.999 13.415z" fill="#E1A890"></path><path d="M222.34 379.35c4.125-4.247 11.531-11.324 21.504-18.632 0 0-2.044-17.698-16.636-31.422.453-2.83.94-5.726 1.464-8.69l-14.271-.196-.311-.157 1.892 61.714 6.358-2.617z" fill="#1D4F91"></path><path d="M206.581 189.855c-9.823-.009-6.895-8.927-19.811-9.72-12.745-.78-24.703 7.29-32.259 28.464-9.527 26.7 4.312 20.97-24.265 43.633-18.212 14.443-26.513 50.829-17.973 63.214 12.642 18.336 20.354 2.995 26.546 18.024 3.79 9.2 3.617 18.255 10.213 23.662 8.038 6.587 15.327 3.321 28.248 1.729 12.92-1.593 16.895 15.707 32.179 7.817 10.279-5.306 4.558-12.744 16.833-17.381 10.726-4.052 14.724-9.367 17.542-16.456 2.57-6.464 2.486-17.444-2.419-22.668-8.603-9.162 1.659-20.7-2.065-32.223-3.265-10.103-10.852-16.845-9.117-32.043 4.07-35.661-6.223-56.035-23.652-56.052" fill="#002453"></path><g id="circles" transform="translate(38 97)" fill="#FAD7E7"><circle cx="2" cy="2" r="2"></circle><circle cx="12" cy="2" r="2"></circle><circle cx="22" cy="2" r="2"></circle><circle cx="32" cy="2" r="2"></circle><circle cx="42" cy="2" r="2"></circle><circle cx="52" cy="2" r="2"></circle><circle cx="62" cy="2" r="2"></circle><circle cx="2" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="22" cy="12" r="2"></circle><circle cx="32" cy="12" r="2"></circle><circle cx="42" cy="12" r="2"></circle><circle cx="52" cy="12" r="2"></circle><circle cx="62" cy="12" r="2"></circle><circle cx="2" cy="22" r="2"></circle><circle cx="12" cy="22" r="2"></circle><circle cx="22" cy="22" r="2"></circle><circle cx="32" cy="22" r="2"></circle><circle cx="42" cy="22" r="2"></circle><circle cx="52" cy="22" r="2"></circle><circle cx="62" cy="22" r="2"></circle><circle cx="2" cy="32" r="2"></circle><circle cx="12" cy="32" r="2"></circle><circle cx="22" cy="32" r="2"></circle><circle cx="32" cy="32" r="2"></circle><circle cx="42" cy="32" r="2"></circle><circle cx="52" cy="32" r="2"></circle><circle cx="62" cy="32" r="2"></circle><circle cx="2" cy="42" r="2"></circle><circle cx="12" cy="42" r="2"></circle><circle cx="22" cy="42" r="2"></circle><circle cx="32" cy="42" r="2"></circle><circle cx="42" cy="42" r="2"></circle><circle cx="52" cy="42" r="2"></circle><circle cx="62" cy="42" r="2"></circle><circle cx="2" cy="52" r="2"></circle><circle cx="12" cy="52" r="2"></circle><circle cx="22" cy="52" r="2"></circle><circle cx="32" cy="52" r="2"></circle><circle cx="42" cy="52" r="2"></circle><circle cx="52" cy="52" r="2"></circle><circle cx="62" cy="52" r="2"></circle><circle cx="2" cy="62" r="2"></circle><circle cx="12" cy="62" r="2"></circle><circle cx="22" cy="62" r="2"></circle><circle cx="32" cy="62" r="2"></circle><circle cx="42" cy="62" r="2"></circle><circle cx="52" cy="62" r="2"></circle><circle cx="62" cy="62" r="2"></circle><circle cx="2" cy="72" r="2"></circle><circle cx="12" cy="72" r="2"></circle><circle cx="22" cy="72" r="2"></circle><circle cx="32" cy="72" r="2"></circle><circle cx="42" cy="72" r="2"></circle><circle cx="52" cy="72" r="2"></circle><circle cx="62" cy="72" r="2"></circle><circle cx="2" cy="82" r="2"></circle><circle cx="12" cy="82" r="2"></circle><circle cx="22" cy="82" r="2"></circle><circle cx="32" cy="82" r="2"></circle><circle cx="42" cy="82" r="2"></circle><circle cx="52" cy="82" r="2"></circle><circle cx="62" cy="82" r="2"></circle></g></g></svg>
+                   </div><div class="benefits-item"><h4>What is the problem?</h4><p>As we spend more time online, it's harder to understand what we are consuming.</p></div><div class="benefits-item"><h4>Why is this a problem?</h4><p>We can find outselves consuming overly negative or biased news.</p></div><div class="benefits-item"><h4>How has this problem arisen?</h4><p>There are incentives to provide news which confirms prior views to keep you online.</p></div><div class="benefits-item"><h4>How does this help?</h4><p>This tool should help you identify where you may be reading overly negative or biased news.</p></div></div></div></div></section>
+
+                   <section id="section-3" class="bg-grey"><div class="site-wrap"><div><h3>How does it work?</h3><p>You provide the web addresses of the news articles you have been reading and the articles are analysed for whether they are positive or negative, the emotions the articles invoke and the key topics of the articles. We collate all this sentiment analysis to give you an overview of the sentiment and biases of your newsreading habits. </div>
+                   </div></section>
+                   <section id="section-4" class="bg-grey"></section>
+                   
+                   </main>
+                   <footer id="footer" class="revamp"><hr class="gradient-bar"><section>
+
+                   </section><section class="bg-grey"><div class="container site-wrap section-wrp"><div class="site-wrap__row mt-20"><div class="small copyright"><p>This is a beta version.</p><p>Copyright © <span id="year">2021</span>, All rights reserved.</p></div></div></div></section><a href="#top-navbar"><img id="backToTop" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNjMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNMCAwaDQ2djg2SDB6Ii8+PHJlY3QgaWQ9ImMiIHg9IjEiIHk9IjgiIHdpZHRoPSI1MyIgaGVpZ2h0PSI2MyIgcng9IjgiLz48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEgLTgpIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxtYXNrIGlkPSJiIiBmaWxsPSIjZmZmIj48dXNlIHhsaW5rOmhyZWY9IiNhIi8+PC9tYXNrPjxnIG9wYWNpdHk9Ii43NSIgbWFzaz0idXJsKCNiKSI+PHVzZSBmaWxsPSIjRjRGNkY5IiB4bGluazpocmVmPSIjYyIvPjxyZWN0IHN0cm9rZS1vcGFjaXR5PSIuMjE0IiBzdHJva2U9IiM5Nzk3OTciIHg9IjEuNSIgeT0iOC41IiB3aWR0aD0iNTIiIGhlaWdodD0iNjIiIHJ4PSI4Ii8+PC9nPjxwYXRoIGQ9Ik0yNCA0NmM4LjI4NCAwIDE1LTYuNzE2IDE1LTE1IDAtOC4yODQtNi43MTYtMTUtMTUtMTUtOC4yODQgMC0xNSA2LjcxNi0xNSAxNSAwIDguMjg0IDYuNzE2IDE1IDE1IDE1eiIgc3Ryb2tlPSIjNTc1NzU2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG1hc2s9InVybCgjYikiLz48cGF0aCBkPSJNMjQgNDZjOC4yODQgMCAxNS02LjcxNiAxNS0xNSAwLTguMjg0LTYuNzE2LTE1LTE1LTE1LTguMjg0IDAtMTUgNi43MTYtMTUgMTUgMCA4LjI4NCA2LjcxNiAxNSAxNSAxNXoiIHN0cm9rZT0iIzU3NTc1NiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXNrPSJ1cmwoI2IpIi8+PHBhdGggZD0iTTIwIDM5bDcuODM0LTguMTE0cy4zNzMtLjM4NiAwLS43NzJMMjAgMjIiIHN0cm9rZT0iIzU3NTc1NiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBtYXNrPSJ1cmwoI2IpIiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgMjQgMzAuNSkiLz48dGV4dCBtYXNrPSJ1cmwoI2IpIiBmb250LWZhbWlseT0iUm9ib3RvLVJlZ3VsYXIsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzU3NTc1NiI+PHRzcGFuIHg9IjExLjQwNCIgeT0iNjMiPlRvcDwvdHNwYW4+PC90ZXh0PjwvZz48L3N2Zz4=" alt="back to top" style="opacity: 0;"></a></footer><script src="https://expcdn.co.uk/www/js/jquery.min.js"></script><script src="https://expcdn.co.uk/www/js/script.js?84e0c57063f82e2abd23"></script><script src="https://expcdn.co.uk/www/js/blazy.min.js"></script><script>var bLazy = new Blazy({
+      breakpoints: [{
+        width: 991,
+        src: 'data-src-small'
+      }, {
+        width: 1024,
+        src: 'data-src-medium'
+      }]
+    });</script><section id="ensModalWrapper" role="dialog" aria-labelledby="ensTitle" aria-describedby="ensDescription" focusable="true" aria-modal="true" style="display: none; left: 8.5px; top: 110px;"><div id="ensModalWrapperInner"><div class="ensModal" aria-label="Consent Configuration"><header class="ensTitle" id="ensTitle">Cookies &amp; online marketing settings</header><div class="consentDescription" id="ensDescription"><p>Please select your options below.</p>
+<p>You can update your preferences at any time by using the ‘Cookies &amp; online marketing’ link at the bottom of each page.</p></div><hr><div class="ensToggleRowWrapper"><div class="ensToggleRow"><div class="ensToggleRowTitle"></div><label for="Performance and AnalyticsSlide" class="ensToggleLabel">Performance and analytics<div class="card"><input class="ensCheckbox" aria-describedby="Performance and Analyticsdescription" type="checkbox" id="Performance and AnalyticsSlide" name="Performance and AnalyticsSlide"><span class="switch"></span><span class="toggle"></span></div></label><div class="description" id="Performance and Analyticsdescription" style="display: none;">These cookies monitor how the website is performing (e.g. pages visited, device type, traffic sources etc.), allowing us to improve and tailor the user experience of the site to be relevant to you and your interests.</div></div><hr><div class="ensToggleRow"><div class="ensToggleRowTitle"></div><label for="AdvertisingSlide" class="ensToggleLabel">Advertising<div class="card"><input class="ensCheckbox" aria-describedby="Advertisingdescription" type="checkbox" id="AdvertisingSlide" name="AdvertisingSlide"><span class="switch"></span><span class="toggle"></span></div></label><div class="description" id="Advertisingdescription" style="display: none;">These cookies and tracking tags help us show you online advertisements tailored to your interests and find customers that might be interested in our products. They can gather information about you and your interactions with us and our partners. Disabling these won't stop you seeing ads, however they will be less personalised.</div></div><hr><div class="ensToggleRow" style="opacity: .5;"><label class="ensToggleLabel">Strictly Necessary<div class="card"><input class="ensCheckbox" aria-describedby="defaultdescription" type="checkbox" name="check" disabled="" checked=""><span class="switch"></span><span class="toggle"></span></div></label><div class="description" id="defaultdescription" style="display: block;">We also set cookies for 'strictly necessary' purposes. Read more on the use of cookies and other tools on our <a href="https://www.experian.co.uk/consumer/cookie-policy.html" target="_blank">Cookies &amp; online marketing page</a>.</div></div><hr></div><div class="ensButtons"><button id="ensAcceptAll" class="button raised grey"><div class="ensCenter" style="outline: none;">Accept all</div><paper-ripple fit=""></paper-ripple></button><button id="ensSave" class="button raised blue" tabindex="0" aria-label="Save Consent Preferences"><div class="ensCenter" fit="">Save settings</div><paper-ripple fit=""></paper-ripple></button></div></div></div></section><section><div id="ensNotifyBanner" class="ensNotifyBanner" role="dialog" aria-label="Consent Banner" aria-describedby="ensBannerDescription" style="display: none; left: 590px;"><div id="ensNotifyBannerInner"><div id="ensBannerDescription"><p>We, and our partners (such as Facebook and Google), use optional tools including tracking tags and cookies to tailor your online experiences and improve our services.</p>
+<p>For descriptions of each tool visit our <a href="https://www.experian.co.uk/consumer/cookie-policy.html" target="_blank">Cookies &amp; online marketing page</a>.  Click ‘Accept all’ to enable them or ‘Settings’ to decline. A link to change your settings is on every page.</p></div><div class="ensButtons"><button id="ensOpenModal" class="ensOpenModalButton button"><span class="material-icons ensOpenButtonIcon">settings</span> Settings</button><button id="ensCloseBanner" class="button raised blue" aria-label="Close consent Widget">Accept all</button></div><div class="ensClear"></div></div></div></section><script>var covidBanner = document.querySelector(".covid-banner");
+    var bannerCloseButton = document.querySelector(".covid-banner .close-button");
+    var boostHero = document.querySelector(".boost-takeover");
+
+    if (covidBanner) {
+      bannerCloseButton.addEventListener("click", function () {
+        boostHero.querySelector(".boost-bg").classList.add("covid-banner-dissmised");
+        boostHero.style.marginTop = "70px";
+        covidBanner.style.display = "none";
+      })
+    }</script><div id="ensBannerBG" style="display: none;"></div><div id="ensModalBG" style="display: none;"></div></body><div id="coFrameDiv" style="height:0px;display:none;"><iframe id="coToolbarFrame" src="chrome-extension://cjabmdjcfcfdmffimndhafhblfmpjdpe/toolbar/placeholder.html" style="height:0px;width:100%;display:none;"></iframe></div></html>

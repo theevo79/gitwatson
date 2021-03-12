@@ -165,15 +165,34 @@ def index(request):
 	data_input1 = News.objects.filter(newsreader=username.id).aggregate(Avg('senti_score'))['senti_score__avg']
 	data_input2 = News.objects.filter(newsreader=username.id).order_by('-senti_score')[:5]
 	data_input3 = News.objects.filter(newsreader=username.id).order_by('-senti_score').reverse()[:5]
-	data_input4 = round(News.objects.filter(newsreader=username.id).aggregate(Avg('sadness'))['sadness__avg'],2)
-	data_input5 = round(News.objects.filter(newsreader=username.id).aggregate(Avg('joy'))['joy__avg'],2)
-	data_input6 = round(News.objects.filter(newsreader=username.id).aggregate(Avg('fear'))['fear__avg'],2)
-	data_input7 = round(News.objects.filter(newsreader=username.id).aggregate(Avg('disgust'))['disgust__avg'],2)
-	data_input8 = round(News.objects.filter(newsreader=username.id).aggregate(Avg('anger'))['anger__avg'],2)
+	data_input4 = News.objects.filter(newsreader=username.id).aggregate(Avg('sadness'))['sadness__avg']
+	data_input5 = News.objects.filter(newsreader=username.id).aggregate(Avg('joy'))['joy__avg']
+	data_input6 = News.objects.filter(newsreader=username.id).aggregate(Avg('fear'))['fear__avg']
+	data_input7 = News.objects.filter(newsreader=username.id).aggregate(Avg('disgust'))['disgust__avg']
+	data_input8 = News.objects.filter(newsreader=username.id).aggregate(Avg('anger'))['anger__avg']
 	data_input9 = News.objects.filter().aggregate(Avg('senti_score'))['senti_score__avg']
 	data_input10 = Ents.objects.filter(newsreader=username.id).order_by('-entsentiscore')[:5]
 	data_input11 = Ents.objects.filter(newsreader=username.id).order_by('-entsentiscore').reverse()[:5]
-	
+	if data_input4 == None:
+		data_input4 = 0
+	else:
+		data_input4 = round(data_input4, 2)
+	if data_input5 == None:
+		data_input5 = 0
+	else:
+		data_input5 = round(data_input5, 2)
+	if data_input6 == None:
+		data_input6 = 0
+	else:
+		data_input6 = round(data_input6, 2)
+	if data_input7 == None:
+		data_input7 = 0
+	else:
+		data_input7 = round(data_input7, 2)
+	if data_input8 == None:
+		data_input8 = 0
+	else:
+		data_input8 = round(data_input8, 2)	
 	if data_input1 == None:
 		f = gauge(labels=['NEGATIVE','','','','','POSITIVE'], \
 	      colors='RdYlGn_r', arrow=0, title='News Sentiment', fname='test.png')
